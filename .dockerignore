@@ -1,0 +1,15 @@
+.git
+.gitignore
+build
+dist
+nbproject/private
+*.war
+*.ear
+*.log
+.env
+.env.*
+README.md
+COMO_EJECUTAR.md
+PRUEBAS_ENDPOINTS.md
+iniciar-proyecto.ps1
+pruebas-endpoints.ps1

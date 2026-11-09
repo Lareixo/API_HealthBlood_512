@@ -1,0 +1,27 @@
+# Build outputs
+build/
+dist/
+*.war
+*.ear
+*.class
+
+# NetBeans local configuration
+nbproject/private/
+nbproject/build-impl.xml~
+
+# Logs and temporary files
+*.log
+hs_err_pid*
+replay_pid*
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+.DS_Store
+
+# Secrets and local environment
+.env
+.env.*
+!.env.example
