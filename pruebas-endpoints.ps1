@@ -15,7 +15,8 @@
 
 param(
     [string]$BaseUrl = "http://localhost:8080/API_HealthBlood_512/api/glucosa",
-    [string]$ShortBaseUrl = "http://localhost:8080/API_HealthBlood_512"
+    [string]$ShortBaseUrl = "http://localhost:8080/API_HealthBlood_512",
+    [int]$TimeoutSec = 20
 )
 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -44,7 +45,7 @@ function Invoke-ApiTest {
         Uri            = $url
         Method         = $Metodo
         UseBasicParsing = $true
-        TimeoutSec     = 20
+        TimeoutSec     = $TimeoutSec
     }
 
     if ($Body) {

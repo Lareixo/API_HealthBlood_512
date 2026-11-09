@@ -52,9 +52,35 @@ public class RestGlucosa {
                            { "response" : "Hola desde Java" }
                            """;
         return Response.ok(respuesta).build();
-    
+     
     }
-    
+
+    /**
+     * GET /api/glucosa/estado
+     * Comprueba que la API puede hablar con la base de datos.
+     */
+    @Path("estado")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response estado() {
+        try {
+            int usuarios = new ControllerrUsuario().getUsuarios().size();
+
+            String respuesta = "{\"status\":\"ok\",\"database\":\"ok\",\"usuarios\":"
+                    + usuarios + "}";
+
+            return Response.ok(respuesta).build();
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+
+            return Response.status(Response.Status.SERVICE_UNAVAILABLE)
+                    .entity("{\"status\":\"error\",\"database\":\"error\"}")
+                    .build();
+        }
+    }
+     
     @Path("saludarPersonalizado")
     @GET
     @Produces(MediaType.APPLICATION_JSON)

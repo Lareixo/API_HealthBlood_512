@@ -29,6 +29,7 @@ public class ShortUrlFilter implements Filter {
 
     static {
         ENDPOINTS.put("saludar", "saludar");
+        ENDPOINTS.put("estado", "estado");
         ENDPOINTS.put("saludarpersonalizado", "saludarPersonalizado");
         ENDPOINTS.put("numero", "Numero");
         ENDPOINTS.put("getallusuarios", "getAllUsuarios");
