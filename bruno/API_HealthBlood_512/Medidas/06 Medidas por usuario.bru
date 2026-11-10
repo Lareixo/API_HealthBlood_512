@@ -1,0 +1,21 @@
+meta {
+  name: Medidas por usuario
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/getMedidasUsuario?idUsuario={{idUsuario}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Devuelve todas las medidas del usuario indicado en idUsuario.
+}

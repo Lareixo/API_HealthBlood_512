@@ -1,0 +1,37 @@
+meta {
+  name: Crear usuario
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/addUsuario
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Bruno",
+    "primerApellido": "Prueba",
+    "segundoApellido": "CRUD",
+    "email": "bruno.crud@gluapi.com"
+  }
+}
+
+script:post-response {
+  const data = res.getBody();
+  if (data && data.idUsuario) {
+    bru.setEnvVar("idUsuario", data.idUsuario);
+  }
+}
+
+tests {
+  test("Responde 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}
+
+docs {
+  Crea un usuario de prueba y guarda el id generado en la variable idUsuario.
+}

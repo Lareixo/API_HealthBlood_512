@@ -33,10 +33,16 @@ public class ShortUrlFilter implements Filter {
         ENDPOINTS.put("saludarpersonalizado", "saludarPersonalizado");
         ENDPOINTS.put("numero", "Numero");
         ENDPOINTS.put("getallusuarios", "getAllUsuarios");
+        ENDPOINTS.put("getusuariobyid", "getUsuarioById");
         ENDPOINTS.put("addusuario", "addUsuario");
+        ENDPOINTS.put("updateusuario", "updateUsuario");
+        ENDPOINTS.put("deleteusuario", "deleteUsuario");
         ENDPOINTS.put("addmedida", "addMedida");
         ENDPOINTS.put("insertarmedida", "addMedida");
         ENDPOINTS.put("getallmedidas", "getAllMedidas");
+        ENDPOINTS.put("getmedidabyid", "getMedidaById");
+        ENDPOINTS.put("updatemedida", "updateMedida");
+        ENDPOINTS.put("deletemedida", "deleteMedida");
         ENDPOINTS.put("getmedidasusuario", "getMedidasUsuario");
         ENDPOINTS.put("getbyusuarioid", "getByUsuarioId");
         ENDPOINTS.put("getmedidasbyusuarioid", "getByUsuarioId");

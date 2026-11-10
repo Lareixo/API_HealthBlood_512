@@ -1,0 +1,21 @@
+meta {
+  name: Saludar
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/saludar
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Prueba basica de que la API responde.
+}

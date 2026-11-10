@@ -1,0 +1,22 @@
+meta {
+  name: Eliminar usuario
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{baseUrl}}/deleteUsuario/{{idUsuario}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Elimina el usuario indicado en idUsuario. Si el usuario tiene medidas,
+  la API responde 409. En ese caso usa "Eliminar usuario en cascada".
+}

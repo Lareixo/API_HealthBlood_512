@@ -1,0 +1,39 @@
+meta {
+  name: Crear medida
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/addMedida
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "idUsuario": {{idUsuario}},
+    "glucosa": 123,
+    "fechaHora": "2026-11-09 20:00:00",
+    "contexto": "Prueba Bruno",
+    "notas": "CRUD desde Bruno"
+  }
+}
+
+script:post-response {
+  const data = res.getBody();
+  if (data && data.idMedida) {
+    bru.setEnvVar("idMedida", data.idMedida);
+  }
+}
+
+tests {
+  test("Responde 201", function() {
+    expect(res.getStatus()).to.equal(201);
+  });
+}
+
+docs {
+  Crea una medida para el usuario indicado en idUsuario y guarda el id
+  generado en la variable idMedida.
+}

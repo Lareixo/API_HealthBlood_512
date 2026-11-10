@@ -1,0 +1,32 @@
+meta {
+  name: Actualizar medida
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/updateMedida/{{idMedida}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "idUsuario": {{idUsuario}},
+    "glucosa": 150,
+    "fechaHora": "2026-11-09 21:30:00",
+    "contexto": "Prueba Bruno editada",
+    "notas": "CRUD desde Bruno"
+  }
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Ejecuta antes "Crear medida" para que idMedida apunte a la medida de prueba.
+  Si lo ejecutas con idMedida=4, modificara una medida real del usuario 1.
+}

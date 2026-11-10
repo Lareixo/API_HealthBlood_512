@@ -88,6 +88,97 @@ public class ControllerrUsuario {
     }
 
     /**
+     * Obtiene un usuario por su id.
+     */
+    public Usuario getUsuarioById(int idUsuario) throws SQLException {
+
+        String sql = "SELECT * FROM usuario WHERE idUsuario = ?";
+
+        ConnectionMysql connMysql = new ConnectionMysql();
+        Connection conn = connMysql.open();
+
+        if (conn == null) {
+            throw new SQLException("No se pudo conectar con MySQL");
+        }
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+            pstm.setInt(1, idUsuario);
+
+            try (ResultSet rs = pstm.executeQuery()) {
+                if (rs.next()) {
+                    return fillUsuario(rs);
+                }
+                return null;
+            }
+
+        } finally {
+            connMysql.close();
+        }
+    }
+
+    /**
+     * Actualiza los datos de un usuario existente.
+     */
+    public boolean updateUsuario(Usuario user) throws SQLException {
+
+        String sql = "UPDATE usuario SET nombre = ?, primerApellido = ?, "
+                + "segundoApellido = ?, email = ? WHERE idUsuario = ?";
+
+        ConnectionMysql connMysql = new ConnectionMysql();
+        Connection conn = connMysql.open();
+
+        if (conn == null) {
+            throw new SQLException("No se pudo conectar con MySQL");
+        }
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+            pstm.setString(1, user.getNombre());
+            pstm.setString(2, user.getPrimerApellido());
+
+            if (user.getSegundoApellido() == null || user.getSegundoApellido().trim().isEmpty()) {
+                pstm.setNull(3, Types.VARCHAR);
+            } else {
+                pstm.setString(3, user.getSegundoApellido());
+            }
+
+            pstm.setString(4, user.getEmail());
+            pstm.setInt(5, user.getIdUsuario());
+
+            return pstm.executeUpdate() > 0;
+
+        } finally {
+            connMysql.close();
+        }
+    }
+
+    /**
+     * Elimina un usuario por su id.
+     */
+    public boolean deleteUsuario(int idUsuario) throws SQLException {
+
+        String sql = "DELETE FROM usuario WHERE idUsuario = ?";
+
+        ConnectionMysql connMysql = new ConnectionMysql();
+        Connection conn = connMysql.open();
+
+        if (conn == null) {
+            throw new SQLException("No se pudo conectar con MySQL");
+        }
+
+        try (PreparedStatement pstm = conn.prepareStatement(sql)) {
+
+            pstm.setInt(1, idUsuario);
+
+            return pstm.executeUpdate() > 0;
+
+        } finally {
+            connMysql.close();
+        }
+    }
+
+    /**
      * Indica si existe un usuario con el id indicado.
      */
     public boolean existeUsuario(int idUsuario) throws SQLException {

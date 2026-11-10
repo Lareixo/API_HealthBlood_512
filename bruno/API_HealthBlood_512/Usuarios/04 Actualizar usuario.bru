@@ -1,0 +1,31 @@
+meta {
+  name: Actualizar usuario
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{baseUrl}}/updateUsuario/{{idUsuario}}
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "nombre": "Bruno",
+    "primerApellido": "Actualizado",
+    "segundoApellido": "CRUD",
+    "email": "bruno.crud@gluapi.com"
+  }
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Ejecuta antes "Crear usuario" para que idUsuario apunte al usuario de prueba.
+  Si lo ejecutas con idUsuario=1, modificara al usuario Sebastian.
+}

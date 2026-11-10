@@ -24,6 +24,7 @@ db/gluco_api_tidb.sql       Esquema y datos para TiDB Cloud
 Dockerfile                  Imagen de Tomcat con el WAR compilado
 render.yaml                 Blueprint de Render
 pruebas-endpoints.ps1       Suite de 34 pruebas de endpoints
+bruno/API_HealthBlood_512/  Coleccion Bruno con el CRUD completo
 ```
 
 ## Ejecucion local
@@ -161,16 +162,36 @@ el servicio despues de 15 minutos de inactividad.
 | Saludo personalizado | `/api/glucosa/saludarPersonalizado?nombre=...` | `/saludarPersonalizado?nombre=...` |
 | Cuadrado | `/api/glucosa/Numero?numero=...` | `/Numero?numero=...` |
 | Listar usuarios | `/api/glucosa/getAllUsuarios` | `/getAllUsuarios` |
+| Obtener usuario por id | `/api/glucosa/getUsuarioById/1` | `/getUsuarioById/1` |
 | Crear usuario (POST form) | `/api/glucosa/addUsuario` | `/addUsuario` |
 | Crear usuario (GET navegador) | `/api/glucosa/addUsuario?...` | `/addUsuario?...` |
+| Actualizar usuario (PUT JSON) | `/api/glucosa/updateUsuario/1` | `/updateUsuario/1` |
+| Eliminar usuario (DELETE) | `/api/glucosa/deleteUsuario/1` | `/deleteUsuario/1` |
+| Eliminar usuario + medidas | `/api/glucosa/deleteUsuario/1?cascade=true` | `/deleteUsuario/1?cascade=true` |
 | Listar medidas | `/api/glucosa/getAllMedidas` | `/getAllMedidas` |
+| Obtener medida por id | `/api/glucosa/getMedidaById/1` | `/getMedidaById/1` |
 | Medidas por usuario | `/api/glucosa/getMedidasUsuario?idUsuario=1` | `/getMedidasUsuario?idUsuario=1` |
 | Medidas por usuario (ruta) | `/api/glucosa/getMedidasUsuario/1` | `/getMedidasUsuario/1` |
 | Alias por usuario | `/api/glucosa/getByUsuarioId?idUsuario=1` | `/getByUsuarioId?idUsuario=1` |
 | Crear medida (POST form) | `/api/glucosa/addMedida` | `/addMedida` |
 | Crear medida (GET navegador) | `/api/glucosa/addMedida?...` | `/addMedida?...` |
+| Actualizar medida (PUT JSON) | `/api/glucosa/updateMedida/1` | `/updateMedida/1` |
+| Eliminar medida (DELETE) | `/api/glucosa/deleteMedida/1` | `/deleteMedida/1` |
 
 Los detalles y ejemplos de cada prueba estan en `PRUEBAS_ENDPOINTS.md`.
+
+## CRUD en Bruno
+
+La coleccion Bruno esta en `bruno/API_HealthBlood_512`. Incluye requests para
+sistema, usuarios y medidas, con environments para Render y local.
+
+1. Abre Bruno → **Collection** → **Open Collection**.
+2. Selecciona `bruno\API_HealthBlood_512`.
+3. Elige el environment **Render** o **Local**.
+4. Sigue el orden del `README.md` de la coleccion.
+
+Las requests de creacion guardan automaticamente el id generado en las
+variables `idUsuario` e `idMedida` para usarlo en actualizar y eliminar.
 
 ## Pruebas
 

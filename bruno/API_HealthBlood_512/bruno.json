@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "API HealthBlood 512 - CRUD",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

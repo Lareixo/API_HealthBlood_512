@@ -1,0 +1,21 @@
+meta {
+  name: Obtener usuario por ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/getUsuarioById/{{idUsuario}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Usa la variable idUsuario del environment. Por defecto consulta el usuario 1.
+}

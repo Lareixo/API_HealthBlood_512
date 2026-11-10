@@ -1,0 +1,21 @@
+meta {
+  name: Obtener medida por ID
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/getMedidaById/{{idMedida}}
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Usa la variable idMedida del environment. Por defecto consulta la medida 4.
+}

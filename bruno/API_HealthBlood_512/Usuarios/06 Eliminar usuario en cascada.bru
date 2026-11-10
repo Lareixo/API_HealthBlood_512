@@ -1,0 +1,22 @@
+meta {
+  name: Eliminar usuario en cascada
+  type: http
+  seq: 6
+}
+
+delete {
+  url: {{baseUrl}}/deleteUsuario/{{idUsuario}}?cascade=true
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  ATENCION: elimina el usuario y todas sus medidas.
+  Usala solo con usuarios de prueba.
+}

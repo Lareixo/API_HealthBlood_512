@@ -1,0 +1,21 @@
+meta {
+  name: Listar medidas
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/getAllMedidas
+  body: none
+  auth: none
+}
+
+tests {
+  test("Responde 200", function() {
+    expect(res.getStatus()).to.equal(200);
+  });
+}
+
+docs {
+  Devuelve todas las medidas registradas.
+}
