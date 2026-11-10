@@ -19,6 +19,7 @@ existentes.
 ```
 src/java/org/lasalle/       Codigo Java (controladores, modelos y REST)
 web/                        index.html y WEB-INF/web.xml
+web/swagger/                API Tester con Swagger UI y openapi.json
 db/gluco_api.sql            Esquema y datos para MySQL local
 db/gluco_api_tidb.sql       Esquema y datos para TiDB Cloud
 Dockerfile                  Imagen de Tomcat con el WAR compilado
@@ -179,6 +180,29 @@ el servicio despues de 15 minutos de inactividad.
 | Eliminar medida (DELETE) | `/api/glucosa/deleteMedida/1` | `/deleteMedida/1` |
 
 Los detalles y ejemplos de cada prueba estan en `PRUEBAS_ENDPOINTS.md`.
+
+## API Tester (Swagger UI)
+
+La aplicacion incluye un tester interactivo propio, servido desde el mismo WAR
+(no depende de CDN y no tiene problemas de CORS):
+
+| Entorno | URL |
+|---|---|
+| Local | `http://localhost:8080/API_HealthBlood_512/swagger/` |
+| Render | `https://api-healthblood-512-h39y.onrender.com/API_HealthBlood_512/swagger/` |
+
+Tambien se puede abrir desde el enlace **API Tester** del menu de la pagina
+principal.
+
+Para probar un endpoint:
+
+1. Despliega el endpoint que quieras en la lista.
+2. Pulsa **Try it out**.
+3. Completa los parametros o el body JSON.
+4. Pulsa **Execute** y revisa el codigo de respuesta y el cuerpo.
+
+El archivo `web/swagger/openapi.json` describe todos los endpoints del CRUD y
+los de sistema.
 
 ## CRUD en Bruno
 
